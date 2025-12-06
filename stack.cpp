@@ -39,7 +39,21 @@ char pop_stack(Stack &s)
 }
 
 
-void reverse_stack(Stack &s)
+
+void stack_display( Stack &s)
+{
+     if (stack_isempty(s))
+    {
+        cout << "Stack is empty" << endl;
+        return ;
+    }
+    for (int i = 0; i <=s.top; i++)
+    {
+        cout << s.arr[i] << " ";
+    }
+    cout << endl;
+}
+void reverse_stack(Stack s)
 {
     Stack temp;
     temp.top=-1;
@@ -48,12 +62,16 @@ void reverse_stack(Stack &s)
        push_stack(temp,pop_stack(s));
     }
     s=temp;
+    stack_display(s);
 }
-void stack_display(const Stack &s)
+void reverse_stack_with_ref(Stack &s)
 {
-    for (int i = 0; i <=s.top; i++)
+    Stack temp;
+    temp.top=-1;
+    while (!stack_isempty(s))
     {
-        cout << s.arr[i] << " ";
+       push_stack(temp,pop_stack(s));
     }
-    cout << endl;
+    s=temp;
+   
 }

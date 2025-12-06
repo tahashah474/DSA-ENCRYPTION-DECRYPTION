@@ -9,10 +9,10 @@ struct Linkedlist_Node
 
 class Linked_list
 {
+    
+    public:
     Linkedlist_Node *front;
     Linkedlist_Node *rear;
-
-public:
     Linked_list()
     {
         front = nullptr;
@@ -72,4 +72,5 @@ public:
             cout<<"..."<<endl;
         }
     }
+   
 };
