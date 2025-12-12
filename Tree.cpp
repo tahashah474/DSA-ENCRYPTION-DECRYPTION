@@ -1,6 +1,18 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
+char randomroot()
+{
+    char c;
+    int r = rand() % 52; // 52 letters total
+
+    if (r < 26)
+        c = 'A' + r; 
+    else
+        c = 'a' + (r - 26);
+
+    return c;
+}
 struct Node
 {
     char data;
@@ -16,7 +28,7 @@ public:
     BST()
     {
         root = new Node;
-        root->data = 'R';
+        root->data = randomroot();
         root->left = root->right = nullptr;
     }
     void tree_insertion(char x)
