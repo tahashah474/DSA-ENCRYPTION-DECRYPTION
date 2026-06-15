@@ -9,7 +9,7 @@ char randomroot()
     if (r < 26)
         c = 'A' + r; 
     else
-        c = 'a' + (r - 26);
+        c = 'a' + (r - 26);//to be understood
 
     return c;
 }
@@ -21,14 +21,14 @@ struct Node
 };
 class BST
 {
-private:
+private://why private what happens if kept in publi
     Node *root;
 
 public:
     BST()
     {
         root = new Node;
-        root->data = randomroot();
+        root->data = randomroot();//placing the random new
         root->left = root->right = nullptr;
     }
     void tree_insertion(char x)

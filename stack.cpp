@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+////DONE 14-25
 
 const int stack_size = 100;
 struct Stack
@@ -8,7 +9,7 @@ struct Stack
     int top;
 };
 
-bool isfull(Stack &s)
+bool isfull(Stack &s)//return type bool doesnt need anything else directly checks and returns t/f
 {
         return s.top == stack_size - 1;
 }
@@ -53,7 +54,7 @@ void stack_display( Stack &s)
     }
     cout << endl;
 }
-void reverse_stack(Stack s)
+void reverse_stack(Stack s)//THis is what we are mainly using 
 {
     Stack temp;
     temp.top=-1;
@@ -61,7 +62,7 @@ void reverse_stack(Stack s)
     {
        push_stack(temp,pop_stack(s));
     }
-    s=temp;
+    s=temp;//value passing back to the main stack
     stack_display(s);
 }
 void reverse_stack_with_ref(Stack &s)
@@ -72,6 +73,6 @@ void reverse_stack_with_ref(Stack &s)
     {
        push_stack(temp,pop_stack(s));
     }
-    s=temp;
+    s=temp;//////important simply copies the element from temp to s 
    
 }

@@ -24,12 +24,12 @@ void insert_queue(Queue &q, char n)
         cout << "Queue is Full" << endl;
         return;
     }
-    else if (q.front == -1)
+    else if (q.front == -1)// first value
     {
         q.front = 0;
         q.rear = 0;
     }
-    else if (q.front != 0 && q.rear == q_size - 1)
+    else if (q.front != 0 && q.rear == q_size - 1)//wrap around
     {
         q.rear = 0;
     }
@@ -52,7 +52,7 @@ char remove_queue(Queue &q)
         q.rear = -1;
         q.front = -1;
     }
-    else if (q.front == q_size - 1)
+    else if (q.front == q_size - 1)//wrap around case
     {
         q.front = 0;
     }
@@ -85,7 +85,7 @@ void display_queue(Queue &q)
         {
             cout << q.arr[i] << " ";
         }
-        for (int i = q.front; i < q_size; i++)
+        for (int i = q.front; i < q_size; i++)///There might be  a  flaw in this part
         {
             cout << q.arr[i] << " ";
         }

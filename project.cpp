@@ -3,12 +3,13 @@
 #include "circular-queue.cpp"
 #include "Linked-list-queue.cpp"
 #include "Tree.cpp"
+#include <ctime>
 
 using namespace std;
-
+//defination//
 bool char_tobinary(Node *root, string &code, char target);
-void msg_reverse(Stack &s, string message);
-void shiftingright(Queue &q, Stack &s);
+void msg_reverse(Stack &s, string message);//
+void shiftingright(Queue &q, Stack &s);//
 void Encoded_msg(BST &tree, Queue &q, Linked_list &list);
 char decode_msg(BST &tree, string code);
 void binary_to_char(BST &tree, Queue &q, Linked_list &list);
@@ -16,7 +17,7 @@ void shiftingleft(Queue &q, Stack &s);
 void rereversemsg(Queue &q, Stack &s);
 int main()
 {
-    srand(time(0));
+    srand(time(0));//root
     BST Tree;
     Queue q;
     q.front = -1;
@@ -26,16 +27,16 @@ int main()
     Linked_list list;
     string msg;
 
-    cout << " Input Message : ";
+    cout << " Input Message : ";//input through getline
     getline(cin, msg);
 
     cout << "\n Encrypting message..." << endl;
     cout << "After Reversing : ";
-    msg_reverse(s, msg);
+    msg_reverse(s, msg);//
     cout << "Shifting words : ";
-    shiftingright(q, s);
+    shiftingright(q, s);//
     cout << "Binary Encoded : ";
-    Encoded_msg(Tree, q, list);
+    Encoded_msg(Tree, q, list);//
     list.display_code();
     cout << "\nEncrypted Message : ";
     list.display_code();
@@ -57,29 +58,29 @@ int main()
     cout << "\nThe root character is : " << randomroot() << endl;
     return 0;
 }
-
-void msg_reverse(Stack &s, string message)
+/////////*************** */
+void msg_reverse(Stack &s, string message)//Calls two functions from stack library
 {
 
-    for (int i = 0; i < message.length(); i++)
+    for (int i = 0; i < message.length(); i++)//inbuilt to get loop moving
     {
         push_stack(s, message[i]);
     }
-    reverse_stack(s);
+    reverse_stack(s);//first step complete which was reversing the message 
 }
 void shiftingright(Queue &q, Stack &s)
 {
 
     while (!stack_isempty(s))
     {
-        insert_queue(q, pop_stack(s));
+        insert_queue(q, pop_stack(s));//reverssed values stack se queue mai 
     }
     insert_queue(q, remove_queue(q));
     insert_queue(q, remove_queue(q));
     display_queue(q);
 }
 
-bool char_tobinary(Node *root, string &code, char target)
+bool char_tobinary(Node *root, string &code, char target)//
 {
     if (root == nullptr)
     {
@@ -90,7 +91,7 @@ bool char_tobinary(Node *root, string &code, char target)
     {
         return true;
     }
-    code.push_back('0');
+    code.push_back('0');//shows movement left
     if (char_tobinary(root->left, code, target))
     {
         return true;
@@ -123,7 +124,7 @@ void Encoded_msg(BST &tree, Queue &q, Linked_list &list)
     {
         string code;
         char target = remove_queue(q2);
-        char_tobinary(tree.getroot(), code, target);
+        char_tobinary(tree.getroot(), code, target);//from here 
         list.insert_into_linkedlist(target, code);
     }
 }
